@@ -1,11 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+<meta charset="UTF-8">
+<title>Anh nhớ em</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+}
+
+.text{
+    position:absolute;
+    white-space:nowrap;
+    font-size:28px;
+    color:pink;
+    animation: fly 8s linear infinite;
+    opacity:0;
+}
+
+@keyframes fly{
+    0%{
+        transform:translateY(100vh) scale(0.5);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-10vh) scale(1.2);
+        opacity:0;
+    }
+}
+</style>
 </head>
 <body>
-<p>a vẫn luôn tôn trọng e vì e là dợ a mà tsao e k tin a:)) a xem xong a đăng lên wed nghĩ a như thế à a muôn xem vc:)))))</p>
+
+<script>
+const messages = [
+    "Anh nhớ emmmm ",
+    "Anh yêu emmm ",
+    
+];
+
+function createText(){
+    const div = document.createElement("div");
+    div.className = "text";
+    div.innerText = messages[Math.floor(Math.random()*messages.length)];
+
+    div.style.left = Math.random() * window.innerWidth + "px";
+    div.style.fontSize = (20 + Math.random()*25) + "px";
+    div.style.animationDuration = (6 + Math.random()*6) + "s";
+
+    document.body.appendChild(div);
+
+    setTimeout(() => {
+        div.remove();
+    }, 12000);
+}
+
+// Tạo liên tục không ngừng
+setInterval(createText, 300);
+</script>
+
 </body>
 </html>
